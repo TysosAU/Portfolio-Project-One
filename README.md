@@ -1,8 +1,8 @@
 # Project
 
 To run this project without errors, 
--firstly you need to create the database, use the "create Database.sql" file in the code to help with that in (I Used SQL Server Management Studio 20 for this project using a SQLEXPRESS server).
--secondly, after the database is created, you will need to make sure your connection string is set up correctly (in appsettings.json in the WebAPI project), then run migrations etc via package manager console.
+firstly you need to create the database, use the "create Database.sql" file in the code to help with that in (I Used SQL Server Management Studio 20 for this project using a SQLEXPRESS server).
+secondly, after the database is created, you will need to make sure your connection string is set up correctly (in appsettings.json in the WebAPI project), then run migrations etc via package manager console.
 Here are a few commands to assist with the migrations etc (will be shown in order line by line below).
 
 dotnet ef Migrations add Create --project WebAPI
