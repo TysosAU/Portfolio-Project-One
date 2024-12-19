@@ -1,0 +1,48 @@
+﻿@using WebApp.Models
+@model IEnumerable<User>
+
+@{
+    ViewData["Title"] = "Users";
+}
+
+<div class="max-w-5xl mx-auto bg-white p-10 rounded-lg shadow-lg mt-12 space-y-6">
+    <h1 class="text-4xl font-semibold text-center text-gray-900 mb-6">All Users</h1>
+
+    @if (ViewData["Error"] != null)
+    {
+        <div class="alert alert-danger bg-red-100 text-red-700 p-4 rounded-md">
+            @ViewData["Error"]
+        </div>
+    }
+
+    @if (Model != null && Model.Any())
+    {
+        <div class="overflow-x-auto mt-6">
+            <table class="min-w-full table-auto border-separate border-spacing-0 text-gray-800">
+                <thead>
+                    <tr class="bg-gray-800 text-white">
+                        <th class="px-6 py-4 text-left">ID</th>
+                        <th class="px-6 py-4 text-left">Username</th>
+                        <th class="px-6 py-4 text-left">Role</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var user in Model)
+                    {
+                        <tr class="odd:bg-gray-100 hover:bg-gray-200">
+                            <td class="px-6 py-4">@user.ID</td>
+                            <td class="px-6 py-4">@user.UserName</td>
+                            <td class="px-6 py-4">@user.Role</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-info bg-blue-100 text-blue-700 p-4 rounded-md mt-6">
+            No Users available.
+        </div>
+    }
+</div>

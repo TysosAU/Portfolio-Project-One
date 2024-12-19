@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - WebApp</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-color: #1E3A8A;
+            margin: 0;
+            padding: 0;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        main {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="bg-black shadow-md w-full relative">
+            <div class="h-16 flex justify-between items-center px-4">
+                <div class="flex items-center space-x-4">
+                    <a class="text-white text-lg font-bold" asp-area="" asp-controller="Home" asp-action="Index">WebApp</a>
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <ul class="flex space-x-4">
+                            <li>
+                                <a class="text-white hover:text-gray-300" asp-area="" asp-controller="Home" asp-action="HeroLoadouts">Hero Loadouts</a>
+                            </li>
+                            <li>
+                                <a class="text-white hover:text-gray-300" asp-area="" asp-controller="Home" asp-action="LoadoutsByCommander">Search Loadouts</a>
+                            </li>
+                            @if (User.IsInRole("Administrator"))
+                            {
+                                <li>
+                                    <a class="text-white hover:text-gray-300" asp-area="" asp-controller="Account" asp-action="AdminRegister">Register A Admin</a>
+                                </li>
+                                <li>
+                                    <a class="text-white hover:text-gray-300" asp-area="" asp-controller="Home" asp-action="CreateHeroLoadout">Create A Hero Loadout</a>
+                                </li>
+                                <li>
+                                    <a class="text-white hover:text-gray-300" asp-area="" asp-controller="Home" asp-action="DeleteLoadout">Delete A Hero Loadout</a>
+                                </li>
+                                <li>
+                                    <a class="text-white hover:text-gray-300" asp-area="" asp-controller="Account" asp-action="UsersView">View All Users</a>
+                                </li>
+                                <li>
+                                    <a class="text-white hover:text-gray-300" asp-area="" asp-controller="Account" asp-action="DeleteUserView">Delete A User</a>
+                                </li>
+                            }
+                        </ul>
+                    }
+                </div>
+                <div class="flex items-center space-x-4">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <span class="text-white">Logged in as @User.Identity.Name</span>
+
+                        <form method="post" asp-action="Logout" asp-controller="Account" class="inline">
+                            <button type="submit" class="btn btn-link text-white hover:text-gray-300 border-none bg-transparent">Logout</button>
+                        </form>
+                    }
+                    else
+                    {
+                        <ul class="flex space-x-4">
+                            <li>
+                                <a class="text-white hover:text-gray-300" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
+                            </li>
+                            <li>
+                                <a class="text-white hover:text-gray-300" asp-area="" asp-controller="Account" asp-action="Register">Register</a>
+                            </li>
+                        </ul>
+                    }
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container mx-auto px-4">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+    <footer class="bg-black text-white py-4 mt-auto w-full relative">
+        <div class="h-16 flex justify-between items-center px-4">
+            <div>
+                <p class="text-sm">&copy; 2024 WebApp</p>
+            </div>
+            <div>
+                <a href="https://github.com/TysosAU" target="_blank" class="flex items-center text-gray-400 hover:text-gray-300">
+                    <img src="/images/github logo.png" alt="GitHub" class="h-6 w-6 rounded-full mr-2">
+                    TysosAU
+                </a>
+            </div>
+        </div>
+    </footer>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

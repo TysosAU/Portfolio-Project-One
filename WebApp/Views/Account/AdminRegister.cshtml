@@ -1,0 +1,42 @@
+﻿@{
+    ViewData["Title"] = "Admin Register";
+}
+
+<div class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-lg mt-12 space-y-6">
+    <h2 class="text-3xl font-semibold text-center text-gray-900 mb-6">Register a new Administrator</h2>
+    <form method="post">
+        <div class="form-group mb-4">
+            <label for="username" class="block text-sm font-medium text-gray-700">Username</label>
+            <input type="text"
+                   class="form-control mt-2 p-3 border border-gray-300 rounded-md w-full focus:ring-2 focus:ring-blue-500 focus:outline-none text-black"
+                   id="username"
+                   name="Username"
+                   pattern="[A-Za-z0-9 ]+"
+                   title="Username can only contain letters and numbers."
+                   required />
+        </div>
+        <div class="form-group mb-6">
+            <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+            <input type="password"
+                   class="form-control mt-2 p-3 border border-gray-300 rounded-md w-full focus:ring-2 focus:ring-blue-500 focus:outline-none text-black"
+                   id="password"
+                   name="Password"
+                   required />
+        </div>
+        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-md transition duration-200 ease-in-out transform hover:scale-105">
+            Register Administrator
+        </button>
+    </form>
+    @if (ViewData["Error"] != null)
+    {
+        <div class="alert alert-danger mt-4 bg-red-100 text-red-700 p-4 rounded-md">
+            @ViewData["Error"]
+        </div>
+    }
+    @if (ViewData["Success"] != null)
+    {
+        <div class="alert alert-success mt-4 bg-green-100 text-green-700 p-4 rounded-md">
+            @ViewData["Success"]
+        </div>
+    }
+</div>

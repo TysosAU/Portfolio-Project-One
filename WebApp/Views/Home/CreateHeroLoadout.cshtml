@@ -1,0 +1,74 @@
+﻿@model WebApp.Models.HeroLoadoutDTO
+@{
+    ViewData["Title"] = "Create Hero Loadout";
+}
+<div class="max-w-3xl mx-auto bg-white p-10 rounded-lg shadow-lg mt-12 space-y-6">
+    <h1 class="text-4xl font-semibold text-center text-gray-900 mb-6">@ViewData["Title"]</h1>
+    @if (ViewData["Error"] != null)
+    {
+        <div class="alert alert-danger bg-red-100 text-red-700 p-4 rounded-md">
+            @ViewData["Error"]
+        </div>
+    }
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success bg-green-100 text-green-700 p-4 rounded-md">
+            @TempData["Success"]
+        </div>
+    }
+    <form asp-action="CreateHeroLoadout" method="post" enctype="multipart/form-data" class="space-y-6">
+        <div class="form-group">
+            <label asp-for="Commander" class="block text-sm font-medium text-gray-700">Commander</label>
+            <input asp-for="Commander" class="form-control mt-2 p-3 border border-gray-300 rounded-md w-full focus:ring-2 focus:ring-blue-500 focus:outline-none text-black" placeholder="Enter the name of the commander in the loadout" pattern="[A-Za-z ]+" required />
+            <span asp-validation-for="Commander" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Perk" class="block text-sm font-medium text-gray-700">Perk</label>
+            <input asp-for="Perk" class="form-control mt-2 p-3 border border-gray-300 rounded-md w-full focus:ring-2 focus:ring-blue-500 focus:outline-none text-black" placeholder="Enter the team perk of the hero loadout" pattern="[A-Za-z ]+" required />
+            <span asp-validation-for="Perk" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="HeroOne" class="block text-sm font-medium text-gray-700">Hero One</label>
+            <input asp-for="HeroOne" class="form-control mt-2 p-3 border border-gray-300 rounded-md w-full focus:ring-2 focus:ring-blue-500 focus:outline-none text-black" placeholder="Enter the name of hero one in the hero loadout's support team" pattern="[A-Za-z ]+" required />
+            <span asp-validation-for="HeroOne" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="HeroTwo" class="block text-sm font-medium text-gray-700">Hero Two</label>
+            <input asp-for="HeroTwo" class="form-control mt-2 p-3 border border-gray-300 rounded-md w-full focus:ring-2 focus:ring-blue-500 focus:outline-none text-black" placeholder="Enter the name of hero two in the hero loadout's support team" pattern="[A-Za-z ]+" required />
+            <span asp-validation-for="HeroTwo" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="HeroThree" class="block text-sm font-medium text-gray-700">Hero Three</label>
+            <input asp-for="HeroThree" class="form-control mt-2 p-3 border border-gray-300 rounded-md w-full focus:ring-2 focus:ring-blue-500 focus:outline-none text-black" placeholder="Enter the name of hero three in the hero loadout's support team" pattern="[A-Za-z ]+" required />
+            <span asp-validation-for="HeroThree" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="HeroFour" class="block text-sm font-medium text-gray-700">Hero Four</label>
+            <input asp-for="HeroFour" class="form-control mt-2 p-3 border border-gray-300 rounded-md w-full focus:ring-2 focus:ring-blue-500 focus:outline-none text-black" placeholder="Enter the name of hero four in the hero loadout's support team" pattern="[A-Za-z ]+" required />
+            <span asp-validation-for="HeroFour" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="HeroFive" class="block text-sm font-medium text-gray-700">Hero Five</label>
+            <input asp-for="HeroFive" class="form-control mt-2 p-3 border border-gray-300 rounded-md w-full focus:ring-2 focus:ring-blue-500 focus:outline-none text-black" placeholder="Enter the name of hero five in the hero loadout's support team" pattern="[A-Za-z ]+" required />
+            <span asp-validation-for="HeroFive" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="GadgetOne" class="block text-sm font-medium text-gray-700">Gadget One</label>
+            <input asp-for="GadgetOne" class="form-control mt-2 p-3 border border-gray-300 rounded-md w-full focus:ring-2 focus:ring-blue-500 focus:outline-none text-black" placeholder="Enter gadget one" pattern="[A-Za-z ]+" required />
+            <span asp-validation-for="GadgetOne" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="GadgetTwo" class="block text-sm font-medium text-gray-700">Gadget Two</label>
+            <input asp-for="GadgetTwo" class="form-control mt-2 p-3 border border-gray-300 rounded-md w-full focus:ring-2 focus:ring-blue-500 focus:outline-none text-black" placeholder="Enter gadget two" pattern="[A-Za-z ]+" required />
+            <span asp-validation-for="GadgetTwo" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="CreatedBy" class="block text-sm font-medium text-gray-700">Created By</label>
+            <input asp-for="CreatedBy" class="form-control mt-2 p-3 border border-gray-300 rounded-md w-full focus:ring-2 focus:ring-blue-500 focus:outline-none text-black" placeholder="Enter the creator of the hero loadout's Name" pattern="[A-Za-z ]+" required />
+            <span asp-validation-for="CreatedBy" class="text-danger"></span>
+        </div>
+        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-md transition duration-200 ease-in-out transform hover:scale-105">
+            Create Loadout
+        </button>
+    </form>
+</div>

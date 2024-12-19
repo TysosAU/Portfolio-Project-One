@@ -1,0 +1,58 @@
+﻿@using WebApp.Models
+@model IEnumerable<HeroLoadout>
+<div class="max-w-6xl mx-auto bg-white p-10 rounded-lg shadow-lg mt-12 space-y-6">
+    <h1 class="text-4xl font-semibold text-center text-gray-900 mb-6">Hero Loadouts</h1>
+
+    @if (ViewData["Error"] != null)
+    {
+        <div class="alert alert-danger bg-red-100 text-red-700 p-4 rounded-md">
+            @ViewData["Error"]
+        </div>
+    }
+    @if (Model != null && Model.Any())
+    {
+        <div class="overflow-x-auto">
+            <table class="min-w-full table-auto">
+                <thead class="bg-gray-800 text-white">
+                    <tr>
+                        <th class="px-4 py-2 text-left">ID</th>
+                        <th class="px-4 py-2 text-left">Commander</th>
+                        <th class="px-4 py-2 text-left">Team Perk</th>
+                        <th class="px-4 py-2 text-left">Support Team Hero One</th>
+                        <th class="px-4 py-2 text-left">Support Team Hero Two</th>
+                        <th class="px-4 py-2 text-left">Support Team Hero Three</th>
+                        <th class="px-4 py-2 text-left">Support Team Hero Four</th>
+                        <th class="px-4 py-2 text-left">Support Team Hero Five</th>
+                        <th class="px-4 py-2 text-left">Gadget One</th>
+                        <th class="px-4 py-2 text-left">Gadget Two</th>
+                        <th class="px-4 py-2 text-left">Created By</th>
+                    </tr>
+                </thead>
+                <tbody class="bg-gray-50 text-black">
+                    @foreach (var Loadout in Model)
+                    {
+                        <tr class="border-t border-gray-300 hover:bg-gray-100">
+                            <td class="px-4 py-2">@Loadout.ID</td>
+                            <td class="px-4 py-2">@Loadout.Commander</td>
+                            <td class="px-4 py-2">@Loadout.Perk</td>
+                            <td class="px-4 py-2">@Loadout.HeroOne</td>
+                            <td class="px-4 py-2">@Loadout.HeroTwo</td>
+                            <td class="px-4 py-2">@Loadout.HeroThree</td>
+                            <td class="px-4 py-2">@Loadout.HeroFour</td>
+                            <td class="px-4 py-2">@Loadout.HeroFive</td>
+                            <td class="px-4 py-2">@Loadout.GadgetOne</td>
+                            <td class="px-4 py-2">@Loadout.GadgetTwo</td>
+                            <td class="px-4 py-2">@Loadout.CreatedBy</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-info bg-blue-100 text-blue-700 p-4 rounded-md">
+            No Hero Loadouts available.
+        </div>
+    }
+</div>

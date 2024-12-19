@@ -1,0 +1,39 @@
+﻿@using WebApp.Models
+@model User
+
+@{
+    ViewData["Title"] = "Delete User";
+}
+
+<div class="max-w-3xl mx-auto bg-white p-10 rounded-lg shadow-lg mt-12 space-y-6">
+    <h1 class="text-4xl font-semibold text-center text-gray-900 mb-6">@ViewData["Title"]</h1>
+
+    @if (ViewData["Error"] != null)
+    {
+        <div class="alert alert-danger bg-red-100 text-red-700 p-4 rounded-md">
+            @ViewData["Error"]
+        </div>
+    }
+
+    @if (ViewData["Success"] != null)
+    {
+        <div class="alert alert-success bg-green-100 text-green-700 p-4 rounded-md">
+            @ViewData["Success"]
+        </div>
+    }
+
+    <div class="bg-white rounded-lg shadow-sm p-6">
+        <h5 class="text-2xl font-semibold text-gray-800 mb-4">Delete User</h5>
+        <p class="text-gray-700">Enter the User ID you want to delete:</p>
+
+        <form method="post" action="@Url.Action("DeleteUserView")" class="space-y-4">
+            <div class="mb-4">
+                <label for="id" class="block text-sm font-medium text-gray-700">User ID</label>
+                <input type="number" id="id" name="id" class="form-control mt-2 p-3 border border-gray-300 rounded-md w-full focus:ring-2 focus:ring-blue-500 focus:outline-none" pattern="[A-Za-z ]+" required />
+            </div>
+            <button type="submit" class="w-full bg-red-600 hover:bg-red-700 text-white p-3 rounded-md transition duration-200 ease-in-out transform hover:scale-105">
+                Delete
+            </button>
+        </form>
+    </div>
+</div>
